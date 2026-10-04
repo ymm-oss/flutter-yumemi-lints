@@ -8,3 +8,6 @@
 /.packages
 
 /.idea/
+
+# Symlink to the mise-managed Dart SDK. See `mise run link-sdk`.
+/.dart_sdk

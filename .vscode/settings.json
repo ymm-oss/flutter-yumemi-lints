@@ -1,5 +1,5 @@
 {
-  "dart.sdkPath": ".dvm/dart_sdk",
+  "dart.sdkPath": ".dart_sdk",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "yaml.schemas": {

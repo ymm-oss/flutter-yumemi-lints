@@ -1,0 +1,9 @@
+# The built-in Dart backend has been available since this mise release.
+min_version = "2026.8.10"
+
+[tools]
+dart = "2.17.0"
+
+[tasks.link-sdk]
+description = "Symlink the pinned Dart SDK to .dart_sdk for the editor"
+run = 'ln -sfn "$(mise where dart)" .dart_sdk'

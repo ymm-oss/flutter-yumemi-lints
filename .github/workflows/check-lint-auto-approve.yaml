@@ -36,16 +36,12 @@ jobs:
           repository: yumemi-inc/flutter-yumemi-lints-tools
           path: tool
 
-      - name: Get dvm config
-        uses: blendfactory/dvm-config-action@acdae6fda79f5a230b5424fdf40fcfd9fcd3367b # v2.0.0
-        id: dvm-config-action
+      - name: Set up Dart
+        uses: jdx/mise-action@94c60b39bc2d90ab2f9bab27f38d3cc4812c1834 # v5.1.0
         with:
-          path: "./tool/.dvm/config.json"
-
-      - name: Set up dart
-        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260 # v1.7.2
-        with:
-          sdk: ${{ steps.dvm-config-action.outputs.dart-sdk-version }}
+          version: "2026.10.1"
+          working_directory: tool
+          cache: false
 
       - name: Install dependencies
         run: dart pub get
