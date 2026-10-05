@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     env:
       DIFF_FILE: diff.txt
@@ -23,18 +23,12 @@ jobs:
           fetch-depth: 0
           path: lint
 
-      - name: Generate a token
-        id: app-token
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        with:
-          app-id: ${{ secrets.APP_ID_OF_YUMEMI_PR_TOKEN_GENERATOR }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY_OF_YUMEMI_PR_TOKEN_GENERATOR }}
-
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: yumemi-inc/flutter-yumemi-lints-tools
+          repository: ymm-oss/flutter-yumemi-lints-tools
           path: tool
+          persist-credentials: false
 
       - name: Set up Dart
         uses: jdx/mise-action@94c60b39bc2d90ab2f9bab27f38d3cc4812c1834 # v5.1.0
