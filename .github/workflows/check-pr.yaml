@@ -3,6 +3,11 @@ name: Check PR
 on:
   pull_request:
 
+permissions:
+  contents: read
+  actions: write
+  checks: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,9 +27,6 @@ jobs:
           MISE_LOCKED: "1"
           # https://mise.jdx.dev/configuration/settings.html#safe
           MISE_SAFE: "1"
-        with:
-          version: "2026.10.1"
-          cache: false
 
       - name: Install dependencies
         run: dart pub get
