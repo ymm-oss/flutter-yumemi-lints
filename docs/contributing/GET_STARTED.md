@@ -5,10 +5,7 @@
 [mise] manages the Dart SDK version for this repository.
 The [mise VS Code extension] symlinks that SDK to `.vscode/mise-tools/dart` for the Dart extension.
 
-1. Install mise globally.
-    ```shell
-    brew install mise
-    ```
+1. Install mise. See the [mise installation guide].
 2. Execute the following command in the project root.
     ```shell
     mise install
@@ -28,4 +25,5 @@ mise exec -- dart pub get
 
 <!-- Links -->
 [mise]: https://mise.jdx.dev/
+[mise installation guide]: https://mise.jdx.dev/installing-mise.html
 [mise VS Code extension]: https://marketplace.visualstudio.com/items?itemName=hverlin.mise-vscode
