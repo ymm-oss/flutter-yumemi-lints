@@ -1,5 +1,8 @@
 {
-  "dart.sdkPath": ".dart_sdk",
+  "dart.sdkPath": ".vscode/mise-tools/dart",
+  "mise.configureExtensionsAutomatically": true,
+  "mise.configureExtensionsIncludeGlobalTools": false,
+  "mise.configureExtensionsUseSymLinks": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "yaml.schemas": {
