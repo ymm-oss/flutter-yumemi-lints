@@ -10,4 +10,4 @@ jobs:
     permissions:
       id-token: write # Required for authentication using OIDC
     # https://github.com/dart-lang/setup-dart
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@65eb853c7ba17dde3be364c3d2858773e7144260 # 1.7.2
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@65eb853c7ba17dde3be364c3d2858773e7144260 # v1.7.2
