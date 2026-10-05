@@ -1,0 +1,5 @@
+# Lockfile version 3 is rejected by mise releases before this one.
+min_version = "2026.9.16"
+
+[tools]
+dart = "2.17.0"

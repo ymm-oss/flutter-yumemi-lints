@@ -14,19 +14,19 @@ jobs:
     if: startsWith(github.head_ref, 'release/')
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    permissions: {}
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Extract dart version
-        uses: blendfactory/dvm-config-action@1efe1a203d0a3a31bffd767b0affb251b54ff6bc # v2.0.0
-        id: dvm-config-action
-
-      - name: Set up dart
-        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260 # v1.7.2
-        with:
-          sdk: ${{ steps.dvm-config-action.outputs.dart-sdk-version }}
+      - name: Set up Dart
+        uses: jdx/mise-action@94c60b39bc2d90ab2f9bab27f38d3cc4812c1834 # v5.1.0
+        env:
+          # https://mise.jdx.dev/configuration/settings.html#locked
+          MISE_LOCKED: "1"
+          # https://mise.jdx.dev/configuration/settings.html#safe
+          MISE_SAFE: "1"
 
       - name: Install dependencies
         run: dart pub get

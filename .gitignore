@@ -8,3 +8,6 @@
 /.packages
 
 /.idea/
+
+# Symlink created by the mise VS Code extension. See docs/contributing/GET_STARTED.md.
+.vscode/mise-tools/
