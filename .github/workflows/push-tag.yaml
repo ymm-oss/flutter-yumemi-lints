@@ -19,8 +19,8 @@ jobs:
         id: generate_token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
-          app-id: ${{ secrets.APP_ID_OF_YMM_OSS_PR_TOKEN_GENERATOR }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY_OF_YMM_OSS_PR_TOKEN_GENERATOR }}
+          app-id: ${{ secrets.APP_ID_OF_YMM_OSS_TAG_PUSHER }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY_OF_YMM_OSS_TAG_PUSHER }}
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
