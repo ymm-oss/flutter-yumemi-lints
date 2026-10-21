@@ -21,6 +21,12 @@ Examples of version updates are as follows:
 > [!NOTE]
 > Changes to `tools/update_lint_rules` don't affect versioning.
 
+## 4.5.1
+
+### Bug Fixes
+
+- Await the Future returned while updating lint rules so exceptions stay inside the try block. This removes the `unawaited_return_in_try_block` warning that blocked publishing on the latest stable Dart SDK.
+
 ## 4.5.0
 
 - Added support for Dart 3.12.x.
