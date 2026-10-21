@@ -14,7 +14,7 @@ class UpdateCommandService {
     try {
       // Determine if it is a Dart project or a Flutter project
       final projectType = _getProjectType();
-      return _updateLintRule(projectType);
+      return await _updateLintRule(projectType);
     } on Exception catch (e) {
       print(e);
       return ExitStatus.error;
