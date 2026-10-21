@@ -20,13 +20,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # Use the latest stable SDK rather than the minimum SDK pinned in mise.toml.
+      # pub.dev publication analyzes the package with the current stable SDK.
       - name: Set up Dart
-        uses: jdx/mise-action@94c60b39bc2d90ab2f9bab27f38d3cc4812c1834 # v5.1.0
-        env:
-          # https://mise.jdx.dev/configuration/settings.html#locked
-          MISE_LOCKED: "1"
-          # https://mise.jdx.dev/configuration/settings.html#safe
-          MISE_SAFE: "1"
+        uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1.8.1
+        with:
+          sdk: stable
 
       - name: Install dependencies
         run: dart pub get
