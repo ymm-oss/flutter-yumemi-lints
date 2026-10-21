@@ -7,7 +7,6 @@ analyzer:
     # Increase safety as much as possible.
     strict-casts: true
     strict-inference: true
-    strict-raw-types: true
   errors:
     # By including all.yaml, some rules will conflict. These warnings will be addressed within this file.
     included_file_warning: ignore
@@ -48,6 +47,9 @@ analyzer:
     # Super parameter names that do not match the parameter name of the corresponding super constructor are usually considered typos.
     matching_super_parameters: error
 
+    # Replaces `strict-raw-types`. The lint defaults to info, so set it to warning to keep the previous severity.
+    no_raw_types: warning
+
     # When unwrapping to a generic type parameter T, using `x!` can lead to a runtime error if T is given a nullable type, so you should use `x as T` instead.
     null_check_on_nullable_type_parameter: error
 
@@ -68,7 +70,7 @@ linter:
     # Conflicts with enabling `avoid_types_on_closure_parameters`, `omit_local_variable_types`, `omit_obvious_local_variable_types`, `omit_obvious_property_types`.
     always_specify_types: false
 
-    # Conflicts with enabling `strict-raw-types`.
+    # Conflicts with enabling `no_raw_types`.
     avoid_annotating_with_dynamic: false
 
     # There are cases that are warned but not fixed by `dart fix`.
@@ -76,6 +78,9 @@ linter:
 
     # Don't use Flutter-style todos.
     flutter_style_todos: false
+
+    # Keep enabling `strict-casts`. `no_dynamic_casts` does not check constructor initializer list field assignments, so it is not a full replacement.
+    no_dynamic_casts: false
 
     # Conflicts with enabling `prefer_single_quotes`.
     prefer_double_quotes: false
