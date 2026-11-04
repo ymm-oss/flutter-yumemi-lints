@@ -22,11 +22,14 @@ jobs:
         with:
           fetch-depth: 0
           path: lint
+          persist-credentials: false
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ymm-oss/flutter-yumemi-lints-tools
+          # main at 2026-11-04. Includes the test-reporter 3.2.0 update.
+          ref: 478ce925f87b82ada6635a2f46011d937dbdba42
           path: tool
           persist-credentials: false
 
@@ -55,8 +58,24 @@ jobs:
         id: identity
         continue-on-error: true
 
-      - name: Auto approve
-        uses: hmarr/auto-approve-action@05a696a09d381a5a0d142c755f7eacbb19eb6525 # v4
+      - name: Approve the checked commit
         if: steps.identity.outcome == 'success'
-        with:
-          review-message: Approved. Because it is the same lint rule as the previous version.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECKED_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        shell: bash
+        run: |
+          current_sha="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .head.sha)"
+          if [ "$current_sha" != "$CHECKED_SHA" ]; then
+            echo "Pull request head changed while checking lint rules."
+            echo "Checked: ${CHECKED_SHA}"
+            echo "Current: ${current_sha}"
+            exit 1
+          fi
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/reviews" \
+            -f commit_id="${CHECKED_SHA}" \
+            -f event="APPROVE" \
+            -f body="Approved. Because it is the same lint rule as the previous version."

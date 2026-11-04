@@ -31,6 +31,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ymm-oss/flutter-yumemi-lints-tools
+          # main at 2026-11-04. Includes the test-reporter 3.2.0 update.
+          ref: 478ce925f87b82ada6635a2f46011d937dbdba42
           path: tool
           persist-credentials: false
 
