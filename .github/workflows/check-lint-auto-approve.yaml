@@ -38,6 +38,8 @@ jobs:
           # https://mise.jdx.dev/configuration/settings.html#safe
           MISE_SAFE: "1"
         with:
+          # mise.toml の min_version。未指定だとキャッシュ再作成時に最新版を取得する。
+          version: "2026.9.16"
           working_directory: tool
 
       - name: Install dependencies
