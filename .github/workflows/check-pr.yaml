@@ -21,6 +21,9 @@ jobs:
 
       - name: Set up Dart
         uses: jdx/mise-action@6be3c7ed4c21d4f76b208d351d95aac273ebb76d # v5.2.4
+        with:
+          # mise.toml の min_version。未指定だとキャッシュ再作成時に最新版を取得する。
+          version: "2026.9.16"
         env:
           # https://mise.jdx.dev/configuration/settings.html#locked
           MISE_LOCKED: "1"
